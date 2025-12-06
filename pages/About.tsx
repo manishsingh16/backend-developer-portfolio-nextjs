@@ -1,52 +1,61 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { SKILL_CATEGORIES } from '../constants';
-import { Server, Database, Code, Shield } from 'lucide-react';
+import { Server, Database, Code, Shield, Cpu } from 'lucide-react';
 
 const About: React.FC = () => {
-  const icons = [<Server key="1"/>, <Database key="2"/>, <Code key="3"/>, <Shield key="4"/>];
+  const icons = [<Server key="1" size={24}/>, <Database key="2" size={24}/>, <Code key="3" size={24}/>, <Shield key="4" size={24}/>];
 
   return (
-    <div className="min-h-screen pt-24 pb-20 px-4 sm:px-6 lg:px-8 bg-primary">
+    <div className="min-h-screen py-32 px-4 sm:px-6 lg:px-8 bg-primary">
       <div className="max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-16 text-center"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Beyond the <span className="text-accent">Code</span>
+          <h2 className="text-6xl md:text-8xl font-display font-bold text-white mb-6">
+            About <span className="text-slate-800">Me.</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-accent to-neon mx-auto rounded-full"></div>
+          <div className="h-px w-full bg-gradient-to-r from-slate-800 to-transparent"></div>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* Bio Section */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
+            whileInView={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="glass-panel p-8 rounded-2xl relative overflow-hidden"
           >
-            <div className="absolute top-0 right-0 p-4 opacity-10">
-              <Code size={120} className="text-white" />
-            </div>
-            
-            <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-              <span className="w-2 h-8 bg-accent rounded-sm"></span>
-              Professional Summary
+            <h3 className="text-3xl font-display font-bold text-white mb-8">
+              Engineer at Heart. <br/> <span className="text-accent">Problem Solver</span> by Trade.
             </h3>
             
-            <p className="text-slate-300 leading-relaxed mb-6">
-              I am a results-driven <strong>Software Developer</strong> with over 3 years of hands-on experience designing and optimizing backend systems. My expertise lies in building scalable architectures using <strong>Node.js</strong> and <strong>Laravel</strong>, ensuring high availability and low latency for mission-critical applications.
-            </p>
-            <p className="text-slate-300 leading-relaxed mb-6">
-              Currently, at <strong>Mamily</strong>, I focus on healthcare technology, solving complex problems related to data security and real-time processing. Previously, at <strong>JPR Technosoft</strong>, I led development teams to deliver enterprise logic for logistics and on-demand services.
-            </p>
-            <p className="text-slate-300 leading-relaxed">
-              I don't just write code; I engineer solutions that drive business growth, optimize performance, and provide seamless user experiences through robust API integration.
-            </p>
+            <div className="space-y-6 text-lg text-slate-400 leading-relaxed font-light">
+                <p>
+                I am a seasoned <strong>Software Developer</strong> with a passion for the unseen machinery that powers the modern web. With over 3 years of experience, I specialize in architecting backend systems that are secure, scalable, and efficient.
+                </p>
+                <p>
+                Currently at <strong>Mamily</strong>, I'm diving deep into health-tech, ensuring sensitive data is handled with the utmost integrity. My background with <strong>JPR Technosoft</strong> gave me the leadership skills to mentor teams and deliver enterprise solutions.
+                </p>
+                <p>
+                I believe in writing code that not only works but is also maintainable and clean. My toolkit is centered around <strong>Node.js</strong> and <strong>Laravel</strong>, but my mindset is language-agnostic: I use the best tool for the job.
+                </p>
+            </div>
+
+             {/* Education */}
+            <div className="mt-12 pt-12 border-t border-slate-800">
+                <div className="flex items-start gap-4">
+                    <div className="p-3 bg-white/5 rounded-full text-white">
+                        <Cpu size={24} />
+                    </div>
+                    <div>
+                        <h4 className="text-xl font-bold text-white mb-1">Bachelor of Engineering</h4>
+                        <p className="text-slate-400 mb-1">Computer Science & Engineering</p>
+                        <p className="text-sm text-slate-500">Aligarh College of Engineering & Technology</p>
+                    </div>
+                </div>
+            </div>
           </motion.div>
 
           {/* Skills Grid */}
@@ -55,58 +64,33 @@ const About: React.FC = () => {
               <motion.div
                 key={category.title}
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 + (index * 0.1), duration: 0.5 }}
-                className="bg-secondary/50 p-6 rounded-xl border border-slate-700 hover:border-accent transition-colors group"
+                className="group relative"
               >
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="p-3 bg-slate-800 rounded-lg text-accent group-hover:text-neon transition-colors">
-                    {icons[index % icons.length]}
-                  </div>
-                  <h4 className="text-xl font-bold text-white">{category.title}</h4>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill) => (
-                    <span 
-                      key={skill} 
-                      className="px-3 py-1 bg-primary border border-slate-700 rounded-full text-sm text-slate-300 group-hover:border-accent/30 transition-colors"
-                    >
-                      {skill}
-                    </span>
-                  ))}
+                <div className="absolute inset-0 bg-gradient-to-r from-accent/20 to-neon/20 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="glass-panel p-8 rounded-xl relative border border-white/5 group-hover:border-white/10 transition-colors">
+                    <div className="flex items-center gap-4 mb-6">
+                        <div className="p-2 bg-white/5 rounded-lg text-white group-hover:text-accent transition-colors">
+                            {icons[index % icons.length]}
+                        </div>
+                        <h4 className="text-xl font-bold text-white font-display tracking-wide">{category.title}</h4>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                        {category.skills.map((skill) => (
+                            <span 
+                            key={skill} 
+                            className="px-3 py-1.5 bg-black/40 border border-slate-800 rounded-lg text-sm text-slate-300 font-medium group-hover:border-slate-600 transition-colors"
+                            >
+                            {skill}
+                            </span>
+                        ))}
+                    </div>
                 </div>
               </motion.div>
             ))}
           </div>
         </div>
-
-        {/* Education/Timeline snippet */}
-        <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mt-20 glass-panel p-8 rounded-2xl"
-        >
-             <h3 className="text-2xl font-bold text-white mb-8 text-center">Education</h3>
-             <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-                <div className="flex items-center gap-4">
-                    <div className="h-12 w-12 rounded-full bg-neon/20 flex items-center justify-center text-neon font-bold">
-                        B.E
-                    </div>
-                    <div>
-                        <h4 className="text-lg font-bold text-white">Bachelor of Engineering</h4>
-                        <p className="text-slate-400">Computer Science & Engineering</p>
-                    </div>
-                </div>
-                 <div className="flex items-center gap-4">
-                    <div className="text-right md:text-left">
-                        <h4 className="text-lg font-bold text-white">Aligarh College of Eng. & Tech</h4>
-                        <p className="text-slate-400">Uttar Pradesh, India</p>
-                    </div>
-                </div>
-             </div>
-        </motion.div>
-
       </div>
     </div>
   );

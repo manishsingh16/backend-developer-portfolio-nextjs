@@ -43,7 +43,11 @@ export const PROJECTS: Project[] = [
     category: "Mobile Backend",
     description: "A robust backend system for a mindfulness application. Features include real-time session tracking, user progress analytics, and premium subscription management.",
     tech: ["Node.js", "MongoDB", "Express", "JWT Auth"],
-    image: "https://picsum.photos/seed/meditation/800/600"
+    images: [
+      "https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=1000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1528319725582-ddc096101511?q=80&w=1000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?q=80&w=1000&auto=format&fit=crop"
+    ]
   },
   {
     id: "highway",
@@ -51,7 +55,11 @@ export const PROJECTS: Project[] = [
     category: "Logistics & Transport",
     description: "Complex fare calculation engine for inter-state transit. Handles dynamic pricing based on distance, vehicle type, and toll taxes in real-time.",
     tech: ["Laravel", "MySQL", "Google Maps API", "Redis"],
-    image: "https://picsum.photos/seed/highway/800/600"
+    images: [
+      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=1000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=1000&auto=format&fit=crop"
+    ]
   },
   {
     id: "aaranya",
@@ -59,7 +67,11 @@ export const PROJECTS: Project[] = [
     category: "Healthcare",
     description: "Telemedicine platform backend enabling video consultations, prescription management, and secure patient history storage.",
     tech: ["Node.js", "PostgreSQL", "WebRTC", "Socket.io"],
-    image: "https://picsum.photos/seed/health/800/600"
+    images: [
+      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1581056771107-24ca5f033842?q=80&w=1000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?q=80&w=1000&auto=format&fit=crop"
+    ]
   },
   {
     id: "service",
@@ -67,7 +79,11 @@ export const PROJECTS: Project[] = [
     category: "On-Demand Marketplace",
     description: "Hyper-local marketplace connecting users with service professionals. Includes geolocation matching and automated booking flows.",
     tech: ["PHP", "Laravel", "MySQL", "Stripe API"],
-    image: "https://picsum.photos/seed/service/800/600"
+    images: [
+      "https://images.unsplash.com/photo-1581578014828-44da14db6d34?q=80&w=1000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?q=80&w=1000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1621905251918-48416bd8575a?q=80&w=1000&auto=format&fit=crop"
+    ]
   },
   {
     id: "edu",
@@ -75,7 +91,11 @@ export const PROJECTS: Project[] = [
     category: "Education",
     description: "Scalable API infrastructure for an online learning management system (LMS), supporting video streaming and quiz engines.",
     tech: ["Node.js", "Express", "AWS S3", "MongoDB"],
-    image: "https://picsum.photos/seed/edu/800/600"
+    images: [
+      "https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80&w=1000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1000&auto=format&fit=crop"
+    ]
   }
 ];
 

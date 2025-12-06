@@ -6,10 +6,10 @@
     <title>Manish Kumar Singh | Backend Architect & Software Developer</title>
     <meta name="description" content="Portfolio of Manish Kumar Singh, a Senior Backend Developer specializing in Node.js, Laravel, and scalable API architecture." />
     
-    <!-- Fonts -->
+    <!-- Fonts: Syne for Headings, Inter for Body -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -18,17 +18,25 @@
         theme: {
           extend: {
             fontFamily: {
-              sans: ['Outfit', 'sans-serif'],
-              mono: ['Space Grotesk', 'monospace'],
+              sans: ['Inter', 'sans-serif'],
+              display: ['Syne', 'sans-serif'],
             },
             colors: {
-              primary: '#0f172a', // Slate 950
-              secondary: '#1e293b', // Slate 800
-              accent: '#06b6d4', // Cyan 500
-              neon: '#8b5cf6', // Violet 500
+              primary: '#050505', // Near Black
+              secondary: '#111111', // Very Dark Grey
+              accent: '#6366f1', // Indigo 500
+              neon: '#a855f7', // Purple 500
+              gold: '#fbbf24', // Amber for elegance
             },
             animation: {
-              'spin-slow': 'spin 10s linear infinite',
+              'spin-slow': 'spin 15s linear infinite',
+              'fade-in': 'fadeIn 0.5s ease-out',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              }
             }
           }
         }
@@ -36,32 +44,34 @@
     </script>
     <style>
       body {
-        background-color: #0f172a;
-        color: #f8fafc;
+        background-color: #050505;
+        color: #e2e8f0;
         overflow-x: hidden;
       }
       .glass-panel {
-        background: rgba(30, 41, 59, 0.4);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
         border: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
       }
-      .neon-glow {
-        box-shadow: 0 0 20px rgba(6, 182, 212, 0.15);
+      .glass-panel:hover {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
       }
       /* Custom scrollbar */
       ::-webkit-scrollbar {
-        width: 8px;
+        width: 6px;
       }
       ::-webkit-scrollbar-track {
-        background: #0f172a;
+        background: #050505;
       }
       ::-webkit-scrollbar-thumb {
-        background: #334155;
-        border-radius: 4px;
+        background: #333;
+        border-radius: 3px;
       }
       ::-webkit-scrollbar-thumb:hover {
-        background: #475569;
+        background: #555;
       }
     </style>
   <script type="importmap">

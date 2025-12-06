@@ -1,78 +1,117 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { PROJECTS } from '../constants';
-import { ExternalLink, Layers } from 'lucide-react';
+import { ExternalLink, Layers, ArrowUpRight } from 'lucide-react';
+import { Project } from '../types';
 
-const Projects: React.FC = () => {
+const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, index }) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % project.images.length);
+    }, 4000); // Change image every 4 seconds
+    return () => clearInterval(timer);
+  }, [project.images.length]);
+
   return (
-    <div className="min-h-screen pt-24 pb-20 px-4 sm:px-6 lg:px-8 bg-primary">
-      <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6"
-        >
-          <div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-2">
-              Featured <span className="text-accent">Work</span>
-            </h2>
-            <p className="text-slate-400">A collection of complex backend architectures and applications.</p>
-          </div>
-          <div className="h-px flex-1 bg-slate-800 mx-8 hidden md:block"></div>
-          <div className="text-slate-500 font-mono text-sm">
-            TOTAL PROJECTS: {PROJECTS.length}
-          </div>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {PROJECTS.map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              whileHover={{ y: -10 }}
-              className="glass-panel rounded-xl overflow-hidden flex flex-col group h-full"
-            >
-              {/* Image Placeholder with Overlay */}
-              <div className="h-48 bg-slate-800 relative overflow-hidden">
-                <img 
-                  src={project.image} 
-                  alt={project.title} 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-100"
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ delay: index * 0.1, duration: 0.6 }}
+      className="group relative"
+    >
+      <div className="glass-panel p-4 rounded-2xl h-full flex flex-col transition-colors duration-500 hover:bg-white/[0.04]">
+        {/* Image Carousel */}
+        <div className="relative h-64 w-full rounded-xl overflow-hidden mb-6 bg-secondary">
+            <div className="absolute inset-0 bg-black/20 z-10 group-hover:bg-black/0 transition-colors duration-500"></div>
+            <AnimatePresence mode='wait'>
+                <motion.img
+                    key={currentImageIndex}
+                    src={project.images[currentImageIndex]}
+                    alt={project.title}
+                    initial={{ scale: 1.1, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="absolute inset-0 w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary to-transparent"></div>
-                <div className="absolute top-4 right-4 bg-black/50 backdrop-blur px-3 py-1 rounded-full border border-white/10">
-                    <span className="text-xs font-bold text-accent uppercase tracking-wider">{project.category}</span>
-                </div>
-              </div>
+            </AnimatePresence>
+            
+            {/* Category Tag */}
+            <div className="absolute top-4 left-4 z-20">
+                <span className="px-3 py-1 text-xs font-bold tracking-widest text-black bg-white/90 backdrop-blur-md rounded-full uppercase">
+                    {project.category}
+                </span>
+            </div>
+        </div>
 
-              <div className="p-6 flex-1 flex flex-col">
-                <div className="mb-4">
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-accent transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">
-                    {project.description}
-                  </p>
-                </div>
+        {/* Content */}
+        <div className="flex-1 flex flex-col px-2">
+            <h3 className="text-2xl font-display font-bold text-white mb-3 group-hover:text-accent transition-colors">
+                {project.title}
+            </h3>
+            <p className="text-slate-400 text-sm leading-relaxed mb-6 line-clamp-3">
+                {project.description}
+            </p>
 
-                <div className="mt-auto pt-4 border-t border-slate-700/50">
-                   <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tech.map(t => (
-                        <span key={t} className="text-xs text-neon bg-neon/10 px-2 py-1 rounded">
+            <div className="mt-auto">
+                <div className="flex flex-wrap gap-2 mb-6">
+                    {project.tech.map((t) => (
+                        <span key={t} className="px-2 py-1 text-xs font-medium text-slate-300 border border-slate-700 rounded bg-slate-800/50">
                             {t}
                         </span>
                     ))}
-                   </div>
-                   
-                   <button className="w-full py-2 flex items-center justify-center gap-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded transition-all">
-                       <Layers size={16}/> View Case Study
-                   </button>
                 </div>
-              </div>
-            </motion.div>
+
+                <button className="w-full py-3 border border-slate-700 rounded-lg text-sm font-semibold text-white hover:bg-white hover:text-black transition-all flex items-center justify-center gap-2 group/btn">
+                    View Case Study <ArrowUpRight size={16} className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                </button>
+            </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+const Projects: React.FC = () => {
+  return (
+    <div className="min-h-screen py-32 px-4 sm:px-6 lg:px-8 bg-primary">
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-24 flex flex-col md:flex-row items-end justify-between gap-8">
+          <div>
+            <motion.h2 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                className="text-6xl md:text-8xl font-display font-bold text-white mb-6"
+            >
+              Selected <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-neon">Work</span>
+            </motion.h2>
+            <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="text-xl text-slate-400 max-w-xl"
+            >
+              A showcase of scalable backend architectures, high-performance APIs, and secure database designs.
+            </motion.p>
+          </div>
+          
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            className="hidden md:block"
+          >
+             <div className="w-24 h-24 rounded-full border border-slate-700 flex items-center justify-center animate-spin-slow">
+                <Layers className="text-accent" size={32} />
+             </div>
+          </motion.div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {PROJECTS.map((project, index) => (
+            <ProjectCard key={project.id} project={project} index={index} />
           ))}
         </div>
       </div>

@@ -18,59 +18,60 @@ const Home: React.FC = () => {
             
             {/* Text Content */}
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="inline-block px-3 py-1 mb-6 border border-accent/30 rounded-full bg-accent/10 backdrop-blur-sm">
-                <span className="text-accent font-mono text-sm">Open to Opportunities</span>
+              <div className="inline-block px-4 py-1.5 mb-8 border border-white/10 rounded-full bg-white/5 backdrop-blur-md">
+                <span className="text-accent font-medium text-sm tracking-wide">Available for Hire</span>
               </div>
               
-              <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight mb-6">
-                Architecting <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-neon">
-                  Scalable Backends
+              <h1 className="text-6xl md:text-8xl font-display font-bold text-white leading-[1.1] mb-8">
+                Backend <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-br from-white via-slate-200 to-slate-500">
+                  Architect.
                 </span>
               </h1>
 
-              <div className="h-20 sm:h-24">
-                 <p className="text-xl text-slate-400 max-w-lg mb-8 leading-relaxed">
-                  I am <strong className="text-white">Manish Kumar Singh</strong>. 
-                  Building high-performance APIs, secure databases, and robust microservices using 
-                  <span className="text-accent"> Node.js</span> and <span className="text-neon">Laravel</span>.
+              <div className="mb-10 max-w-lg">
+                 <p className="text-xl md:text-2xl text-slate-400 leading-relaxed font-light">
+                  Hi, I'm <strong className="text-white font-semibold">Manish Kumar Singh</strong>. 
+                  I build secure, scalable, and high-performance systems using <span className="text-accent">Node.js</span> & <span className="text-neon">Laravel</span>.
                 </p>
               </div>
 
-              <div className="flex flex-wrap gap-4 mt-8">
+              <div className="flex flex-wrap gap-5">
                 <NavLink
                   to="/contact"
-                  className="px-8 py-4 bg-accent hover:bg-cyan-400 text-primary font-bold rounded-lg transition-all transform hover:scale-105 flex items-center gap-2"
+                  className="px-8 py-4 bg-white text-black font-bold text-lg rounded-full hover:bg-slate-200 transition-all transform hover:scale-105 flex items-center gap-2"
                 >
-                  Hire Me <ArrowRight size={20} />
+                  Start Project <ArrowRight size={20} />
                 </NavLink>
                 
                 <a
-                  href="/resume.pdf" // Placeholder path
-                  className="px-8 py-4 glass-panel text-white font-medium rounded-lg hover:bg-white/10 transition-all flex items-center gap-2 border border-white/20"
+                  href="/resume.pdf"
+                  className="px-8 py-4 glass-panel text-white font-medium text-lg rounded-full hover:bg-white/10 transition-all flex items-center gap-2 border border-white/10"
                 >
-                  Resume <Download size={20} />
+                  Download CV <Download size={20} />
                 </a>
               </div>
 
-              <div className="mt-12 flex items-center gap-6">
-                <a href={LINKEDIN} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-accent transition-colors">
-                  <Linkedin size={24} />
-                </a>
-                <a href={`mailto:${EMAIL}`} className="text-slate-400 hover:text-accent transition-colors">
-                  <Mail size={24} />
-                </a>
-                <div className="h-px w-20 bg-slate-700"></div>
-                <span className="text-slate-500 font-mono text-sm">BASED IN INDIA</span>
+              <div className="mt-16 flex items-center gap-8">
+                <div className="flex gap-6">
+                    <a href={LINKEDIN} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-white transition-colors transform hover:-translate-y-1 duration-300">
+                    <Linkedin size={28} />
+                    </a>
+                    <a href={`mailto:${EMAIL}`} className="text-slate-400 hover:text-white transition-colors transform hover:-translate-y-1 duration-300">
+                    <Mail size={28} />
+                    </a>
+                </div>
+                <div className="h-px w-24 bg-gradient-to-r from-slate-700 to-transparent"></div>
+                <span className="text-slate-500 font-mono text-xs uppercase tracking-widest">Aligarh, India</span>
               </div>
             </motion.div>
 
             {/* Empty column to let the 3D element shine on the right side */}
-            <div className="hidden lg:block"></div>
+            <div className="hidden lg:block pointer-events-none"></div>
           </div>
         </div>
       </div>

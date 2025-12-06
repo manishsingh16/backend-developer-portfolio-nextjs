@@ -3,6 +3,18 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Sphere, MeshDistortMaterial, Float, Stars } from '@react-three/drei';
 import * as THREE from 'three';
 
+// Augment JSX.IntrinsicElements to include React Three Fiber elements
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      meshStandardMaterial: any;
+      ambientLight: any;
+      directionalLight: any;
+      pointLight: any;
+    }
+  }
+}
+
 const AnimatedShape = () => {
   const meshRef = useRef<THREE.Mesh>(null);
 

@@ -19,69 +19,74 @@ const Contact: React.FC = () => {
     };
 
     return (
-        <div className="min-h-screen pt-24 pb-20 px-4 sm:px-6 lg:px-8 bg-primary">
+        <div className="min-h-screen py-32 px-4 sm:px-6 lg:px-8 bg-primary">
             <div className="max-w-6xl mx-auto">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    className="mb-20 text-center"
+                >
+                    <h2 className="text-6xl md:text-8xl font-display font-bold text-white mb-6">
+                        Get in <span className="text-accent">Touch.</span>
+                    </h2>
+                    <p className="text-xl text-slate-400 max-w-2xl mx-auto font-light">
+                         Have a project in mind? Let's discuss how we can build scalable solutions together.
+                    </p>
+                </motion.div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
                     
                     {/* Info Section */}
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6 }}
+                        className="space-y-12"
                     >
-                        <h2 className="text-4xl font-bold text-white mb-6">
-                            Let's Build Something <br/> <span className="text-accent">Scalable.</span>
-                        </h2>
-                        <p className="text-slate-400 mb-12 text-lg">
-                            Whether you need a robust backend architecture, API optimization, or a full-stack consultation, I'm ready to help you achieve your technical goals.
-                        </p>
+                        <div className="glass-panel p-8 rounded-2xl">
+                             <h3 className="text-2xl font-display font-bold text-white mb-8">Contact Information</h3>
+                             <div className="space-y-8">
+                                <a href={`mailto:${EMAIL}`} className="flex items-center gap-6 group">
+                                    <div className="w-14 h-14 bg-white/5 rounded-full flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-300">
+                                        <Mail className="w-6 h-6" />
+                                    </div>
+                                    <div>
+                                        <p className="text-sm text-slate-500 uppercase tracking-widest mb-1">Email</p>
+                                        <p className="text-xl text-white font-medium">{EMAIL}</p>
+                                    </div>
+                                </a>
+                                
+                                <a href={`tel:${PHONE}`} className="flex items-center gap-6 group">
+                                    <div className="w-14 h-14 bg-white/5 rounded-full flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-300">
+                                        <Phone className="w-6 h-6" />
+                                    </div>
+                                    <div>
+                                        <p className="text-sm text-slate-500 uppercase tracking-widest mb-1">Phone</p>
+                                        <p className="text-xl text-white font-medium">{PHONE}</p>
+                                    </div>
+                                </a>
 
-                        <div className="space-y-8">
-                            <a href={`mailto:${EMAIL}`} className="flex items-center gap-4 group">
-                                <div className="w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center group-hover:bg-accent transition-colors">
-                                    <Mail className="text-white w-6 h-6" />
-                                </div>
-                                <div>
-                                    <p className="text-sm text-slate-500">Email</p>
-                                    <p className="text-lg text-white font-medium">{EMAIL}</p>
-                                </div>
-                            </a>
-                            
-                            <a href={`tel:${PHONE}`} className="flex items-center gap-4 group">
-                                <div className="w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center group-hover:bg-neon transition-colors">
-                                    <Phone className="text-white w-6 h-6" />
-                                </div>
-                                <div>
-                                    <p className="text-sm text-slate-500">Phone</p>
-                                    <p className="text-lg text-white font-medium">{PHONE}</p>
-                                </div>
-                            </a>
-
-                            <div className="flex items-center gap-4 group">
-                                <div className="w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center">
-                                    <MapPin className="text-white w-6 h-6" />
-                                </div>
-                                <div>
-                                    <p className="text-sm text-slate-500">Location</p>
-                                    <p className="text-lg text-white font-medium">{LOCATION}</p>
+                                <div className="flex items-center gap-6 group">
+                                    <div className="w-14 h-14 bg-white/5 rounded-full flex items-center justify-center">
+                                        <MapPin className="w-6 h-6" />
+                                    </div>
+                                    <div>
+                                        <p className="text-sm text-slate-500 uppercase tracking-widest mb-1">Location</p>
+                                        <p className="text-xl text-white font-medium">{LOCATION}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="mt-12 p-6 glass-panel rounded-xl border border-slate-700/50">
-                            <h4 className="text-white font-bold mb-4 flex items-center gap-2">
-                                <Terminal size={18} className="text-neon" /> 
-                                Connect on Socials
-                            </h4>
-                            <a 
-                                href={LINKEDIN} 
-                                target="_blank" 
-                                rel="noreferrer"
-                                className="inline-flex items-center gap-2 px-6 py-3 bg-[#0077b5] text-white rounded-lg hover:bg-[#006396] transition-colors font-medium"
-                            >
-                                <Linkedin size={20} /> LinkedIn Profile
-                            </a>
-                        </div>
+                        <a 
+                            href={LINKEDIN} 
+                            target="_blank" 
+                            rel="noreferrer"
+                            className="block p-8 bg-[#0077b5] rounded-2xl hover:bg-[#006396] transition-colors text-center group"
+                        >
+                            <Linkedin size={32} className="text-white mx-auto mb-4 group-hover:scale-110 transition-transform" />
+                            <span className="text-white font-bold text-xl">Connect on LinkedIn</span>
+                        </a>
                     </motion.div>
 
                     {/* Form Section */}
@@ -89,18 +94,18 @@ const Contact: React.FC = () => {
                         initial={{ opacity: 0, x: 30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="bg-secondary/30 backdrop-blur-xl p-8 rounded-2xl border border-white/5"
+                        className="glass-panel p-8 md:p-10 rounded-2xl"
                     >
                         {submitted ? (
                             <div className="h-full flex flex-col items-center justify-center text-center py-20">
-                                <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mb-4">
-                                    <Send className="text-green-400 w-8 h-8" />
+                                <div className="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mb-6">
+                                    <Send className="text-green-400 w-10 h-10" />
                                 </div>
-                                <h3 className="text-2xl font-bold text-white mb-2">Message Sent!</h3>
-                                <p className="text-slate-400">I'll get back to you as soon as possible.</p>
+                                <h3 className="text-3xl font-display font-bold text-white mb-2">Message Sent</h3>
+                                <p className="text-slate-400 text-lg mb-8">Thank you for reaching out. I'll get back to you shortly.</p>
                                 <button 
                                     onClick={() => setSubmitted(false)}
-                                    className="mt-6 text-accent hover:underline"
+                                    className="text-white border-b border-white hover:border-transparent transition-all"
                                 >
                                     Send another message
                                 </button>
@@ -108,36 +113,36 @@ const Contact: React.FC = () => {
                         ) : (
                             <form onSubmit={handleSubmit} className="space-y-6">
                                 <div>
-                                    <label htmlFor="name" className="block text-sm font-medium text-slate-400 mb-2">Name</label>
+                                    <label htmlFor="name" className="block text-sm font-medium text-slate-400 mb-2 uppercase tracking-wider">Your Name</label>
                                     <input
                                         type="text"
                                         id="name"
                                         required
-                                        className="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all"
+                                        className="w-full bg-black/30 border border-slate-700 rounded-lg px-4 py-4 text-white focus:outline-none focus:border-white focus:ring-0 transition-all placeholder:text-slate-600"
                                         placeholder="John Doe"
                                         value={formData.name}
                                         onChange={e => setFormData({...formData, name: e.target.value})}
                                     />
                                 </div>
                                 <div>
-                                    <label htmlFor="email" className="block text-sm font-medium text-slate-400 mb-2">Email</label>
+                                    <label htmlFor="email" className="block text-sm font-medium text-slate-400 mb-2 uppercase tracking-wider">Email Address</label>
                                     <input
                                         type="email"
                                         id="email"
                                         required
-                                        className="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all"
+                                        className="w-full bg-black/30 border border-slate-700 rounded-lg px-4 py-4 text-white focus:outline-none focus:border-white focus:ring-0 transition-all placeholder:text-slate-600"
                                         placeholder="john@example.com"
                                         value={formData.email}
                                         onChange={e => setFormData({...formData, email: e.target.value})}
                                     />
                                 </div>
                                 <div>
-                                    <label htmlFor="message" className="block text-sm font-medium text-slate-400 mb-2">Message</label>
+                                    <label htmlFor="message" className="block text-sm font-medium text-slate-400 mb-2 uppercase tracking-wider">Message</label>
                                     <textarea
                                         id="message"
                                         required
-                                        rows={4}
-                                        className="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all"
+                                        rows={6}
+                                        className="w-full bg-black/30 border border-slate-700 rounded-lg px-4 py-4 text-white focus:outline-none focus:border-white focus:ring-0 transition-all placeholder:text-slate-600 resize-none"
                                         placeholder="Tell me about your project..."
                                         value={formData.message}
                                         onChange={e => setFormData({...formData, message: e.target.value})}
@@ -146,10 +151,10 @@ const Contact: React.FC = () => {
                                 <button
                                     type="submit"
                                     disabled={isSubmitting}
-                                    className="w-full bg-gradient-to-r from-accent to-blue-600 text-white font-bold py-4 rounded-lg hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                                    className="w-full bg-white text-black font-bold text-lg py-4 rounded-lg hover:bg-slate-200 transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-4"
                                 >
                                     {isSubmitting ? 'Sending...' : (
-                                        <>Send Message <Send size={18} /></>
+                                        <>Send Message <Send size={20} /></>
                                     )}
                                 </button>
                             </form>

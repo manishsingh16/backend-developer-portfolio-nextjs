@@ -16,7 +16,7 @@ export interface Project {
   category: string;
   description: string;
   tech: string[];
-  image: string;
+  images: string[]; // Changed from single string to array
   link?: string;
 }
 

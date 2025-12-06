@@ -16,7 +16,6 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setIsOpen(false);
   }, [location]);
@@ -31,55 +30,50 @@ const Navbar: React.FC = () => {
 
   return (
     <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? 'glass-panel py-3' : 'bg-transparent py-5'
+      className={`fixed w-full z-50 transition-all duration-500 border-b ${
+        scrolled ? 'bg-primary/80 backdrop-blur-xl border-white/5 py-4' : 'bg-transparent border-transparent py-6'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <NavLink to="/" className="flex items-center space-x-2 group">
-            <div className="bg-gradient-to-tr from-accent to-neon p-2 rounded-lg group-hover:shadow-[0_0_15px_rgba(6,182,212,0.5)] transition-shadow">
-              <Terminal className="text-white w-6 h-6" />
-            </div>
-            <span className="text-2xl font-bold font-mono tracking-tighter text-white">
-              MANISH<span className="text-accent">.DEV</span>
+          <NavLink to="/" className="flex items-center gap-2 group">
+            <span className="text-xl font-display font-bold text-white tracking-tight">
+              Manish<span className="text-slate-500">.Dev</span>
             </span>
           </NavLink>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <NavLink
                 key={link.path}
                 to={link.path}
                 className={({ isActive }) =>
-                  `text-sm font-medium tracking-wide transition-colors duration-300 relative group ${
-                    isActive ? 'text-accent' : 'text-slate-300 hover:text-white'
+                  `text-sm font-medium tracking-wide transition-colors duration-300 ${
+                    isActive ? 'text-white' : 'text-slate-500 hover:text-slate-300'
                   }`
                 }
               >
-                {({ isActive }) => (
-                  <>
-                    {link.name}
-                    <span
-                      className={`absolute -bottom-1 left-0 h-0.5 bg-accent transition-all duration-300 ${
-                        isActive ? 'w-full' : 'w-0 group-hover:w-full'
-                      }`}
-                    />
-                  </>
-                )}
+                {link.name}
               </NavLink>
             ))}
+            
+            <NavLink 
+                to="/contact"
+                className="px-5 py-2 rounded-full bg-white text-black text-sm font-bold hover:bg-slate-200 transition-colors"
+            >
+                Hire Me
+            </NavLink>
           </div>
 
           {/* Mobile Button */}
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-white hover:text-accent transition-colors"
+              className="text-white hover:text-accent transition-colors p-2"
             >
-              {isOpen ? <X size={28} /> : <Menu size={28} />}
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
@@ -92,18 +86,18 @@ const Navbar: React.FC = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass-panel border-t border-slate-700 overflow-hidden"
+            className="md:hidden bg-primary border-b border-slate-800 overflow-hidden"
           >
-            <div className="px-4 pt-2 pb-6 space-y-2">
+            <div className="px-4 py-6 space-y-4">
               {navLinks.map((link) => (
                 <NavLink
                   key={link.path}
                   to={link.path}
                   className={({ isActive }) =>
-                    `block px-3 py-3 rounded-md text-base font-medium ${
+                    `block text-2xl font-display font-bold ${
                       isActive
-                        ? 'bg-accent/10 text-accent'
-                        : 'text-slate-300 hover:bg-white/5 hover:text-white'
+                        ? 'text-white'
+                        : 'text-slate-500'
                     }`
                   }
                 >
