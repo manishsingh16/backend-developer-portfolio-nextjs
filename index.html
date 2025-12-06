@@ -6,10 +6,10 @@
     <title>Manish Kumar Singh | Backend Architect & Software Developer</title>
     <meta name="description" content="Portfolio of Manish Kumar Singh, a Senior Backend Developer specializing in Node.js, Laravel, and scalable API architecture." />
     
-    <!-- Fonts: Syne for Headings, Inter for Body -->
+    <!-- Fonts: Outfit (Headings) & Plus Jakarta Sans (Body) for a modern tech look -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -18,24 +18,29 @@
         theme: {
           extend: {
             fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-              display: ['Syne', 'sans-serif'],
+              sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+              display: ['"Outfit"', 'sans-serif'],
             },
             colors: {
-              primary: '#050505', // Near Black
-              secondary: '#111111', // Very Dark Grey
-              accent: '#6366f1', // Indigo 500
-              neon: '#a855f7', // Purple 500
-              gold: '#fbbf24', // Amber for elegance
+              primary: '#020203', // Deepest charcoal/black
+              secondary: '#0c0c0e', // Slightly lighter for cards
+              accent: '#3b82f6', // Bright Blue
+              neon: '#8b5cf6', // Violet
+              surface: '#18181b', // Zinc 900
             },
             animation: {
-              'spin-slow': 'spin 15s linear infinite',
-              'fade-in': 'fadeIn 0.5s ease-out',
+              'spin-slow': 'spin 20s linear infinite',
+              'fade-in': 'fadeIn 0.8s ease-out forwards',
+              'slide-up': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
             },
             keyframes: {
               fadeIn: {
                 '0%': { opacity: '0' },
                 '100%': { opacity: '1' },
+              },
+              slideUp: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
               }
             }
           }
@@ -44,34 +49,46 @@
     </script>
     <style>
       body {
-        background-color: #050505;
+        background-color: #020203;
         color: #e2e8f0;
         overflow-x: hidden;
       }
       .glass-panel {
-        background: rgba(255, 255, 255, 0.03);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
+        background: rgba(255, 255, 255, 0.02);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
         border: 1px solid rgba(255, 255, 255, 0.05);
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
       }
       .glass-panel:hover {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.04);
+        border-color: rgba(255, 255, 255, 0.1);
       }
+      /* Premium text gradients */
+      .text-gradient {
+        background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .text-gradient-accent {
+        background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      
       /* Custom scrollbar */
       ::-webkit-scrollbar {
-        width: 6px;
+        width: 8px;
       }
       ::-webkit-scrollbar-track {
-        background: #050505;
+        background: #020203;
       }
       ::-webkit-scrollbar-thumb {
-        background: #333;
-        border-radius: 3px;
+        background: #27272a;
+        border-radius: 4px;
       }
       ::-webkit-scrollbar-thumb:hover {
-        background: #555;
+        background: #3f3f46;
       }
     </style>
   <script type="importmap">

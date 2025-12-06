@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { EMAIL, PHONE, LOCATION, LINKEDIN } from '../constants';
-import { Mail, Phone, MapPin, Linkedin, Send, Terminal } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Send } from 'lucide-react';
 
 const Contact: React.FC = () => {
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -26,7 +26,7 @@ const Contact: React.FC = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     className="mb-20 text-center"
                 >
-                    <h2 className="text-6xl md:text-8xl font-display font-bold text-white mb-6">
+                    <h2 className="text-6xl md:text-8xl font-display font-bold text-white mb-6 tracking-tight">
                         Get in <span className="text-accent">Touch.</span>
                     </h2>
                     <p className="text-xl text-slate-400 max-w-2xl mx-auto font-light">
@@ -41,9 +41,9 @@ const Contact: React.FC = () => {
                         initial={{ opacity: 0, x: -30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6 }}
-                        className="space-y-12"
+                        className="space-y-10"
                     >
-                        <div className="glass-panel p-8 rounded-2xl">
+                        <div className="p-8 rounded-2xl bg-secondary border border-white/5">
                              <h3 className="text-2xl font-display font-bold text-white mb-8">Contact Information</h3>
                              <div className="space-y-8">
                                 <a href={`mailto:${EMAIL}`} className="flex items-center gap-6 group">
@@ -51,8 +51,8 @@ const Contact: React.FC = () => {
                                         <Mail className="w-6 h-6" />
                                     </div>
                                     <div>
-                                        <p className="text-sm text-slate-500 uppercase tracking-widest mb-1">Email</p>
-                                        <p className="text-xl text-white font-medium">{EMAIL}</p>
+                                        <p className="text-xs text-slate-500 uppercase tracking-widest mb-1">Email</p>
+                                        <p className="text-lg text-white font-medium">{EMAIL}</p>
                                     </div>
                                 </a>
                                 
@@ -61,8 +61,8 @@ const Contact: React.FC = () => {
                                         <Phone className="w-6 h-6" />
                                     </div>
                                     <div>
-                                        <p className="text-sm text-slate-500 uppercase tracking-widest mb-1">Phone</p>
-                                        <p className="text-xl text-white font-medium">{PHONE}</p>
+                                        <p className="text-xs text-slate-500 uppercase tracking-widest mb-1">Phone</p>
+                                        <p className="text-lg text-white font-medium">{PHONE}</p>
                                     </div>
                                 </a>
 
@@ -71,8 +71,8 @@ const Contact: React.FC = () => {
                                         <MapPin className="w-6 h-6" />
                                     </div>
                                     <div>
-                                        <p className="text-sm text-slate-500 uppercase tracking-widest mb-1">Location</p>
-                                        <p className="text-xl text-white font-medium">{LOCATION}</p>
+                                        <p className="text-xs text-slate-500 uppercase tracking-widest mb-1">Location</p>
+                                        <p className="text-lg text-white font-medium">{LOCATION}</p>
                                     </div>
                                 </div>
                             </div>
@@ -94,7 +94,7 @@ const Contact: React.FC = () => {
                         initial={{ opacity: 0, x: 30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="glass-panel p-8 md:p-10 rounded-2xl"
+                        className="p-8 md:p-10 rounded-2xl bg-secondary border border-white/5"
                     >
                         {submitted ? (
                             <div className="h-full flex flex-col items-center justify-center text-center py-20">
@@ -113,36 +113,36 @@ const Contact: React.FC = () => {
                         ) : (
                             <form onSubmit={handleSubmit} className="space-y-6">
                                 <div>
-                                    <label htmlFor="name" className="block text-sm font-medium text-slate-400 mb-2 uppercase tracking-wider">Your Name</label>
+                                    <label htmlFor="name" className="block text-xs font-bold text-slate-500 mb-2 uppercase tracking-widest">Your Name</label>
                                     <input
                                         type="text"
                                         id="name"
                                         required
-                                        className="w-full bg-black/30 border border-slate-700 rounded-lg px-4 py-4 text-white focus:outline-none focus:border-white focus:ring-0 transition-all placeholder:text-slate-600"
+                                        className="w-full bg-primary border border-white/10 rounded-lg px-4 py-4 text-white focus:outline-none focus:border-white focus:ring-0 transition-all placeholder:text-slate-700"
                                         placeholder="John Doe"
                                         value={formData.name}
                                         onChange={e => setFormData({...formData, name: e.target.value})}
                                     />
                                 </div>
                                 <div>
-                                    <label htmlFor="email" className="block text-sm font-medium text-slate-400 mb-2 uppercase tracking-wider">Email Address</label>
+                                    <label htmlFor="email" className="block text-xs font-bold text-slate-500 mb-2 uppercase tracking-widest">Email Address</label>
                                     <input
                                         type="email"
                                         id="email"
                                         required
-                                        className="w-full bg-black/30 border border-slate-700 rounded-lg px-4 py-4 text-white focus:outline-none focus:border-white focus:ring-0 transition-all placeholder:text-slate-600"
+                                        className="w-full bg-primary border border-white/10 rounded-lg px-4 py-4 text-white focus:outline-none focus:border-white focus:ring-0 transition-all placeholder:text-slate-700"
                                         placeholder="john@example.com"
                                         value={formData.email}
                                         onChange={e => setFormData({...formData, email: e.target.value})}
                                     />
                                 </div>
                                 <div>
-                                    <label htmlFor="message" className="block text-sm font-medium text-slate-400 mb-2 uppercase tracking-wider">Message</label>
+                                    <label htmlFor="message" className="block text-xs font-bold text-slate-500 mb-2 uppercase tracking-widest">Message</label>
                                     <textarea
                                         id="message"
                                         required
                                         rows={6}
-                                        className="w-full bg-black/30 border border-slate-700 rounded-lg px-4 py-4 text-white focus:outline-none focus:border-white focus:ring-0 transition-all placeholder:text-slate-600 resize-none"
+                                        className="w-full bg-primary border border-white/10 rounded-lg px-4 py-4 text-white focus:outline-none focus:border-white focus:ring-0 transition-all placeholder:text-slate-700 resize-none"
                                         placeholder="Tell me about your project..."
                                         value={formData.message}
                                         onChange={e => setFormData({...formData, message: e.target.value})}

@@ -3,18 +3,6 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Sphere, MeshDistortMaterial, Float, Stars } from '@react-three/drei';
 import * as THREE from 'three';
 
-// Augment JSX.IntrinsicElements to include React Three Fiber elements
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      meshStandardMaterial: any;
-      ambientLight: any;
-      directionalLight: any;
-      pointLight: any;
-    }
-  }
-}
-
 const AnimatedShape = () => {
   const meshRef = useRef<THREE.Mesh>(null);
 
@@ -46,6 +34,7 @@ const InnerCore = () => {
    return (
     <Float speed={4} rotationIntensity={2} floatIntensity={1}>
         <Sphere args={[1, 32, 32]} scale={1.2}>
+            {/* @ts-ignore */}
             <meshStandardMaterial 
                 color="#06b6d4" 
                 emissive="#06b6d4"
@@ -61,8 +50,11 @@ const Hero3D: React.FC = () => {
   return (
     <div className="w-full h-full absolute inset-0 z-0">
       <Canvas camera={{ position: [0, 0, 8], fov: 45 }}>
+        {/* @ts-ignore */}
         <ambientLight intensity={0.5} />
+        {/* @ts-ignore */}
         <directionalLight position={[10, 10, 5]} intensity={1.5} color="#06b6d4" />
+        {/* @ts-ignore */}
         <pointLight position={[-10, -10, -10]} intensity={1} color="#8b5cf6" />
         
         <AnimatedShape />
